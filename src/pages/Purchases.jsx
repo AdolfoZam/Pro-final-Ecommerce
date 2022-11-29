@@ -20,7 +20,7 @@ const Purchases = () => {
                     <li key={purchase.id}>
                         {
                             purchase.cart.products.map(product => (
-                                <li>
+                                <li key={product.id}>
                                     <h3><b>Products: </b>{product.title}</h3>
                                     <h3><b>Price: </b>{product.price}</h3> 
                                     <h3><b>Purchases: </b>{product.createdAt}</h3>  

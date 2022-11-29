@@ -26,9 +26,6 @@ const Home = () => {
                 {/* categorias */}
                 <Col lg={3}>
                     <ListGroup>
-
-
-
                         <h3>Category</h3>
                         {categoryList.map(category => (// con este map, voy a mostrar las categegorias,  //este buton me va a filtrar las categorias, aprovecho que ya tengo la funcion
                             <ListGroup.Item key={category.id}
@@ -43,8 +40,6 @@ const Home = () => {
                 {/* productos */}
                 <Col lg={9}>
                     <h1>Technology</h1>
-
-
                     <InputGroup className="mb-3">
                         <Form.Control
                             placeholder="Recipient's username"
@@ -60,40 +55,32 @@ const Home = () => {
                             Search
                         </Button>
                     </InputGroup>
-                    <Row xs={1} md={2} className="g-4">
-                    {products.map(productItem => (
-                            <Col>
+                    <Row xs={1} md={2}  lg={3} className="g-4">
+                        {products.map(productItem => (
+                            <Col key={productItem.id}>
                                 <Card>
-                                    {/* con este map, accedemos a los titulos de los productos, y mediante la lista inferior se ponen como link que nos llevara al detalle de cada uno */}
-                                    <Card.Img 
-                                    variant="top" 
-                                    src={productItem.productImgs[0]}
-                                    style={{height:200, objectFit:"contain"}}
-                                    />
-                                    <Card.Body>
-                                        <Card.Title>{productItem.title}</Card.Title>
-                                        <Card.Text>
-                                            <h2><b>Price: $</b>{productItem.price}</h2>
-                                            <h2><b>Status: </b>{productItem.status}</h2>
-                                        </Card.Text>
-                                    </Card.Body>
+                                    <Link to={`/product/${productItem.id}`} style={{textDecoration:"none"}}>
+                                        {/* con este map, accedemos a los titulos de los productos, y mediante la lista inferior se ponen como link que nos llevara al detalle de cada uno */}
+                                        <Card.Img
+                                            variant="top"
+                                            src={productItem.productImgs[0]}
+                                            style={{ height: 200, objectFit: "contain" }}
+                                        />
+                                        <Card.Body>
+                                            <Card.Title>{productItem.title}</Card.Title>
+                                            <Card.Text>
+                                                <h2><b>Price: $</b>{productItem.price}</h2>
+                                                <h2><b>Status: </b>{productItem.status}</h2>
+                                                <h5><b>Description: </b>{productItem.description}</h5>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Link>
                                 </Card>
                             </Col>
                         ))}
                     </Row>
-                 
-                        {/* <li
-                            key={productItem.id}>
-                            
-                                
-                                <img src= style={{ width: 200 }} alt="" className='img-descrption' />
-                            </Link>
-                        </li>
-                    ))} */}
-                    
-                </Col>
+               </Col>
             </Row>
-
         </div>
     );
 };
