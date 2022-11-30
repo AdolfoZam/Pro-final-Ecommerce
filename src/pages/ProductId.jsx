@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProductsThunk } from '../store/slices/products.slice';
@@ -26,10 +26,25 @@ const ProductId = () => {
     )// instruccion para realizar un filtro para traer los productos que son similares o de la misma categoria
 
     // console.log(relateProducts)
+
+    const [cart, setCart] =useState("")
+
+   const addToCart = () => {
+    const carts = {
+        id: product.id,
+        cart: cart
+    }
+    console.log(carts)
+   }
+
+    
     return (
         <div>
             <h1>{product?.title}</h1>
-            <p><b>Category: </b>{product.category?.name}</p>
+            <p><b>Category: </b>{product?.category.name}</p>
+            
+            <input type="text" value={cart} onChange={(e) => setCart(e.target.value)} />
+            <Button onClick={addToCart}>Add to Cart</Button>
             <Row>
                 {/* Description del producto */}
                 <Col lg={9}>
