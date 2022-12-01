@@ -9,7 +9,7 @@ export const cartSlice = createSlice({
     initialState: [],
     reducers: {
         setCart:(state, action) =>{
-            return state.payload
+            return action.payload
         }
     }
 })
@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
 export const getCartThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.get("https://e-commerce-api.academlo.tech/api/v1/cart", getConfig())
-        .then((res) => dispatch(setCart(["hola"])))
+        .then((res) => dispatch(setCart(res.data.data.cart.products)))
         .catch(error => console.log(error.response.data))
         .finally(() => dispatch(setIsLoading(false)));
 }
