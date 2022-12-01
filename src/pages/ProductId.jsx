@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { createCartThunk } from '../store/slices/cart.slice';
 import { getProductsThunk } from '../store/slices/products.slice';
 
 const ProductId = () => {
@@ -27,14 +28,15 @@ const ProductId = () => {
 
     // console.log(relateProducts)
 
-    const [cart, setCart] =useState("")
+    const [quantity, setQuantity] = useState("")
 
    const addToCart = () => {
-    const carts = {
+    const productToCart = {
         id: product.id,
-        cart: cart
+        quantity: quantity
     }
-    console.log(carts)
+    console.log(productToCart)
+    dispatch(createCartThunk(productToCart))
    }
 
     
@@ -43,7 +45,7 @@ const ProductId = () => {
             <h1>{product?.title}</h1>
             <p><b>Category: </b>{product?.category.name}</p>
             
-            <input type="text" value={cart} onChange={(e) => setCart(e.target.value)} />
+            <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
             <Button onClick={addToCart}>Add to Cart</Button>
             <Row>
                 {/* Description del producto */}
