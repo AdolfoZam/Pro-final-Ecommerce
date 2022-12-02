@@ -46,7 +46,8 @@ const ProductId = () => {
             <p><b>Category: </b>{product?.category.name}</p>
             
             <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-            <Button onClick={addToCart}>Add to Cart</Button>
+            <Button onClick={addToCart}>Add to Cart</Button><br /><br />
+
             <Row>
                 {/* Description del producto */}
                 <Col lg={9}>
@@ -54,6 +55,7 @@ const ProductId = () => {
                     <p><br /><b>Description: </b><br />{product?.description}</p>
                     <p><br /><b>Price: $ <br /></b>{product?.price}</p>
                     <p><br /><b>Status:  <br /></b>{product?.status}</p>
+                  
                 </Col>
                 {/* articulos relacionados */}
                 <Col lg={3}>

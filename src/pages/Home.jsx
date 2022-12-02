@@ -71,7 +71,7 @@ const Home = () => {
                                             <Card.Text>
                                                 <h2><b>Price: $</b>{productItem.price}</h2>
                                                 <h2><b>Status: </b>{productItem.status}</h2>
-                                                <h5><b>Description: </b>{productItem.description}</h5>
+                                                {/* <h5><b>Description: </b>{productItem.description}</h5> */}
                                             </Card.Text>
                                         </Card.Body>
                                     </Link>
